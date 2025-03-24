@@ -29,14 +29,8 @@ class LoginController extends Controller
         $request->session()->regenerate();
 
         $role = Auth::user()->role;
-        if ($role === 'administrator') {
-            return redirect()->intended(route('admin.dashboard'));
-        } elseif ($role === 'waiter') {
-            return redirect()->intended(route('waiter.dashboard'));
-        } elseif ($role === 'kasir') {
-            return redirect()->intended(route('kasir.dashboard'));
-        } elseif ($role === 'owner') {
-            return redirect()->intended(route('owner.dashboard'));
+        if (in_array($role, ['administrator', 'waiter', 'kasir', 'owner'])) {
+            return redirect()->intended(route('dashboard'));
         } else {
             return redirect()->intended(route('home'));
         }
