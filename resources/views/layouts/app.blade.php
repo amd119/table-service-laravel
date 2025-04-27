@@ -84,7 +84,8 @@
         <script src="{{ asset('js/logout.js') }}"></script>
         <script src="{{ asset('js/table-service.js') }}"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+        <script src="{{ asset('js/sweetalert2@11.min.js') }}"></script>
 
         {{-- @stack('create-menu-scripts')
         @stack('index-menu-scripts') --}}
