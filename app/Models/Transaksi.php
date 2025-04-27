@@ -20,6 +20,10 @@ class Transaksi extends Model
         'metode_pembayaran'
     ];
 
+    protected $casts = [
+        'tanggal' => 'datetime',
+    ];
+
     // Relasi ke Pesanan
     public function pesanan(): BelongsTo
     {

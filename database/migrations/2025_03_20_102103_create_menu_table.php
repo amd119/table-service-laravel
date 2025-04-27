@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama_menu');
             $table->integer('harga');
             // Kolom tambahan
-            $table->string('kategori')->nullable();
+            $table->string('gambar')->default('img/default.jpg');
             $table->enum('status', ['tersedia', 'habis'])->default('tersedia');
             $table->timestamps();
         });

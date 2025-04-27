@@ -15,11 +15,16 @@ class Pesanan extends Model
     protected $fillable = [
         'idmenu',
         'idpelanggan',
-        'Jumlah',
+        'jumlah',
         'iduser',
         'idmeja',
         'tanggal',
         'status'
+    ];
+
+    // Add this to cast tanggal field to a Carbon instance
+    protected $casts = [
+        'tanggal' => 'datetime',
     ];
 
     // Relasi ke Menu

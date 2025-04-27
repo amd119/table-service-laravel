@@ -1,4 +1,5 @@
-@extends('layouts.app', ['titlePage' => 'Home'])
+@extends('layouts.app')
+@section('title', 'Home')
 
 @section('content-home')
 <body id="page-top">
@@ -12,11 +13,11 @@
     <header class="masthead">
         <div class="container px-4 d-flex h-100 align-items-center justify-content-center">
             <div class="text-center">
-                <h1 class="mx-auto my-0 text-uppercase">Kasir Restoran</h1>
-                <h2 class="text-white-50 mx-auto mt-2 mb-5">Web Kasir Restoran Responsive untuk memanajemen Restoran dengan Mudah.</h2>
+                <h1 class="mx-auto my-0 text-uppercase">D-Res</h1>
+                <h2 class="text-white-50 mx-auto mt-2 mb-5">Web D-Res Responsive untuk memanajemen Restoran dengan Mudah.</h2>
                 @if (Route::has('login'))
                     @auth
-                        @if (Auth::user()?->role === 'administrator,waiter,kasir,owner')
+                        @if (in_array(Auth::user()?->role, ['administrator', 'waiter', 'kasir', 'owner']))
                             <a href="{{ url('/dashboard') }}" class="btn btn-primary">
                                 Dashboard
                             </a>

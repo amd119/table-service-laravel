@@ -1,18 +1,14 @@
 
-@extends('layouts.app', ['titlePage' => 'Dashboard'])
+@extends('layouts.app')
 
-
+@section('title', 'Dashboard')
 
 @section('content-dashboard')
+    @include('layouts.partials.sidebar')
+    @include('layouts.partials.header')
 
-    @yield('content-sidebar')
-    @yield('content-header')
-    <!--! ================================================================ !-->
-    <!--! [Start] Main Content !-->
-    <!--! ================================================================ !-->
     <main class="nxl-container">
         <div class="nxl-content">
-            <!-- [ page-header ] start -->
             <div class="page-header">
                 <div class="page-header-left d-flex align-items-center">
                     <div class="page-header-title">
@@ -35,53 +31,6 @@
                             <div id="reportrange" class="reportrange-picker d-flex align-items-center">
                                 <span class="reportrange-picker-field"></span>
                             </div>
-                            <div class="dropdown filter-dropdown">
-                                <a class="btn btn-md btn-light-brand" data-bs-toggle="dropdown" data-bs-offset="0, 10" data-bs-auto-close="outside">
-                                    <i class="feather-filter me-2"></i>
-                                    <span>Filter</span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <div class="dropdown-item">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="Role" checked="checked" />
-                                            <label class="custom-control-label c-pointer" for="Role">Role</label>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-item">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="Team" checked="checked" />
-                                            <label class="custom-control-label c-pointer" for="Team">Team</label>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-item">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="Email" checked="checked" />
-                                            <label class="custom-control-label c-pointer" for="Email">Email</label>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-item">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="Member" checked="checked" />
-                                            <label class="custom-control-label c-pointer" for="Member">Member</label>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-item">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="Recommendation" checked="checked" />
-                                            <label class="custom-control-label c-pointer" for="Recommendation">Recommendation</label>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="javascript:void(0);" class="dropdown-item">
-                                        <i class="feather-plus me-3"></i>
-                                        <span>Create New</span>
-                                    </a>
-                                    <a href="javascript:void(0);" class="dropdown-item">
-                                        <i class="feather-filter me-3"></i>
-                                        <span>Manage Filter</span>
-                                    </a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="d-md-none d-flex align-items-center">
@@ -91,146 +40,106 @@
                     </div>
                 </div>
             </div>
-            <!-- [ page-header ] end -->
             <!-- [ Main Content ] start -->
             <div class="main-content">
                 <div class="row">
-                    <!-- [Invoices Awaiting Payment] start -->
-                    <div class="col-xxl-3 col-md-6">
-                        <div class="card stretch stretch-full">
-                            <div class="card-body">
-                                <div class="d-flex align-items-start justify-content-between mb-4">
-                                    <div class="d-flex gap-4 align-items-center">
-                                        <div class="avatar-text avatar-lg bg-gray-200">
-                                            <i class="feather-dollar-sign"></i>
+                    
+                    <div class="accordion-body pb-2">
+                            <div class="row">
+                                <div class="col-xxl-3 col-md-6">
+                                    <div class="card stretch stretch-full">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <div class="avatar-text avatar-xl rounded">
+                                                        <i class="feather-users"></i>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="fw-bold d-block">
+                                                        <span class="d-block">Total User</span>
+                                                        <span class="fs-24 fw-bolder d-block">{{ App\Helpers\TableServiceHelper::hitung('users') }}</span>
+                                                    </a>
+                                                </div>
+                                                {{-- <div class="badge bg-soft-success text-success">
+                                                    <i class="feather-arrow-up fs-10 me-1"></i>
+                                                    <span>36.85%</span>
+                                                </div> --}}
+                                            </div>
                                         </div>
-                                        <div>
-                                            <div class="fs-4 fw-bold text-dark"><span class="counter">45</span>/<span class="counter">76</span></div>
-                                            <h3 class="fs-13 fw-semibold text-truncate-1-line">Invoices Awaiting Payment</h3>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="">
-                                        <i class="feather-more-vertical"></i>
-                                    </a>
-                                </div>
-                                <div class="pt-4">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <a href="javascript:void(0);" class="fs-12 fw-medium text-muted text-truncate-1-line">Invoices Awaiting </a>
-                                        <div class="w-100 text-end">
-                                            <span class="fs-12 text-dark">$5,569</span>
-                                            <span class="fs-11 text-muted">(56%)</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress mt-2 ht-3">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 56%"></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- [Invoices Awaiting Payment] end -->
-                    <!-- [Converted Leads] start -->
-                    <div class="col-xxl-3 col-md-6">
-                        <div class="card stretch stretch-full">
-                            <div class="card-body">
-                                <div class="d-flex align-items-start justify-content-between mb-4">
-                                    <div class="d-flex gap-4 align-items-center">
-                                        <div class="avatar-text avatar-lg bg-gray-200">
-                                            <i class="feather-cast"></i>
+                                <div class="col-xxl-3 col-md-6">
+                                    <div class="card stretch stretch-full">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <div class="avatar-text avatar-xl rounded">
+                                                        <i class="feather-user-check"></i>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="fw-bold d-block">
+                                                        <span class="d-block">Total Menu</span>
+                                                        <span class="fs-24 fw-bolder d-block">{{ App\Helpers\TableServiceHelper::hitung('menu') }}</span>
+                                                    </a>
+                                                </div>
+                                                {{-- <div class="badge bg-soft-danger text-danger">
+                                                    <i class="feather-arrow-down fs-10 me-1"></i>
+                                                    <span>24.56%</span>
+                                                </div> --}}
+                                            </div>
                                         </div>
-                                        <div>
-                                            <div class="fs-4 fw-bold text-dark"><span class="counter">48</span>/<span class="counter">86</span></div>
-                                            <h3 class="fs-13 fw-semibold text-truncate-1-line">Converted Leads</h3>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="">
-                                        <i class="feather-more-vertical"></i>
-                                    </a>
-                                </div>
-                                <div class="pt-4">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <a href="javascript:void(0);" class="fs-12 fw-medium text-muted text-truncate-1-line">Converted Leads </a>
-                                        <div class="w-100 text-end">
-                                            <span class="fs-12 text-dark">52 Completed</span>
-                                            <span class="fs-11 text-muted">(63%)</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress mt-2 ht-3">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 63%"></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- [Converted Leads] end -->
-                    <!-- [Projects In Progress] start -->
-                    <div class="col-xxl-3 col-md-6">
-                        <div class="card stretch stretch-full">
-                            <div class="card-body">
-                                <div class="d-flex align-items-start justify-content-between mb-4">
-                                    <div class="d-flex gap-4 align-items-center">
-                                        <div class="avatar-text avatar-lg bg-gray-200">
-                                            <i class="feather-briefcase"></i>
-                                        </div>
-                                        <div>
-                                            <div class="fs-4 fw-bold text-dark"><span class="counter">16</span>/<span class="counter">20</span></div>
-                                            <h3 class="fs-13 fw-semibold text-truncate-1-line">Projects In Progress</h3>
+                                <div class="col-xxl-3 col-md-6">
+                                    <div class="card stretch stretch-full">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <div class="avatar-text avatar-xl rounded">
+                                                        <i class="feather-user-plus"></i>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="fw-bold d-block">
+                                                        <span class="d-block">Total Table</span>
+                                                        <span class="fs-24 fw-bolder d-block">{{ App\Helpers\TableServiceHelper::hitung('meja') }}</span>
+                                                    </a>
+                                                </div>
+                                                {{-- <div class="badge bg-soft-success text-success">
+                                                    <i class="feather-arrow-up fs-10 me-1"></i>
+                                                    <span>33.29%</span>
+                                                </div> --}}
+                                            </div>
                                         </div>
                                     </div>
-                                    <a href="javascript:void(0);" class="">
-                                        <i class="feather-more-vertical"></i>
-                                    </a>
                                 </div>
-                                <div class="pt-4">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <a href="javascript:void(0);" class="fs-12 fw-medium text-muted text-truncate-1-line">Projects In Progress </a>
-                                        <div class="w-100 text-end">
-                                            <span class="fs-12 text-dark">16 Completed</span>
-                                            <span class="fs-11 text-muted">(78%)</span>
+                                <div class="col-xxl-3 col-md-6">
+                                    <div class="card stretch stretch-full">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <div class="avatar-text avatar-xl rounded">
+                                                        <i class="feather-user-minus"></i>
+                                                    </div>
+                                                    @if (in_array(Auth::user()?->role, ['kasir', 'owner']))
+                                                    <a href="javascript:void(0);" class="fw-bold d-block">
+                                                        <span class="d-block">Total Transaction</span>
+                                                        <span class="fs-24 fw-bolder d-block">{{ App\Helpers\TableServiceHelper::hitung('transaksi') }}</span>
+                                                    </a>
+                                                    @elseif (in_array(Auth::user()?->role, ['waiter', 'owner']))
+                                                    <a href="javascript:void(0);" class="fw-bold d-block">
+                                                        <span class="d-block">Total Order</span>
+                                                        <span class="fs-24 fw-bolder d-block">{{ App\Helpers\TableServiceHelper::hitung('pesanan') }}</span>
+                                                    </a>
+                                                    @endif
+                                                </div>
+                                                {{-- <div class="badge bg-soft-danger text-danger">
+                                                    <i class="feather-arrow-down fs-10 me-1"></i>
+                                                    <span>42.47%</span>
+                                                </div> --}}
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="progress mt-2 ht-3">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 78%"></div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
-                    <!-- [Projects In Progress] end -->
-                    <!-- [Conversion Rate] start -->
-                    <div class="col-xxl-3 col-md-6">
-                        <div class="card stretch stretch-full">
-                            <div class="card-body">
-                                <div class="d-flex align-items-start justify-content-between mb-4">
-                                    <div class="d-flex gap-4 align-items-center">
-                                        <div class="avatar-text avatar-lg bg-gray-200">
-                                            <i class="feather-activity"></i>
-                                        </div>
-                                        <div>
-                                            <div class="fs-4 fw-bold text-dark"><span class="counter">46.59</span>%</div>
-                                            <h3 class="fs-13 fw-semibold text-truncate-1-line">Conversion Rate</h3>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="">
-                                        <i class="feather-more-vertical"></i>
-                                    </a>
-                                </div>
-                                <div class="pt-4">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <a href="javascript:void(0);" class="fs-12 fw-medium text-muted text-truncate-1-line"> Conversion Rate </a>
-                                        <div class="w-100 text-end">
-                                            <span class="fs-12 text-dark">$2,254</span>
-                                            <span class="fs-11 text-muted">(46%)</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress mt-2 ht-3">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 46%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- [Conversion Rate] end -->
+                    
                     <!-- [Payment Records] start -->
                     <div class="col-xxl-8">
                         <div class="card stretch stretch-full">
@@ -733,484 +642,13 @@
                         </div>
                     </div>
                     <!-- [Latest Leads] end -->
-                    <!--! BEGIN: [Upcoming Schedule] !-->
-                    <div class="col-xxl-4">
-                        <div class="card stretch stretch-full">
-                            <div class="card-header">
-                                <h5 class="card-title">Upcoming Schedule</h5>
-                                <div class="card-header-action">
-                                    <div class="card-header-btn">
-                                        <div data-bs-toggle="tooltip" title="Delete">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Refresh">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Maximize/Minimize">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
-                                            <div data-bs-toggle="tooltip" title="Options">
-                                                <i class="feather-more-vertical"></i>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <!--! BEGIN: [Events] !-->
-                                <div class="p-3 border border-dashed rounded-3 mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="wd-50 ht-50 bg-soft-primary text-primary lh-1 d-flex align-items-center justify-content-center flex-column rounded-2 schedule-date">
-                                                <span class="fs-18 fw-bold mb-1 d-block">20</span>
-                                                <span class="fs-10 fw-semibold text-uppercase d-block">Dec</span>
-                                            </div>
-                                            <div class="text-dark">
-                                                <a href="javascript:void(0);" class="fw-bold mb-2 text-truncate-1-line">React Dashboard Design</a>
-                                                <span class="fs-11 fw-normal text-muted text-truncate-1-line">11:30am - 12:30pm</span>
-                                            </div>
-                                        </div>
-                                        <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">
-                                                <img src="./../assets/images/avatar/2.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Michael Ksen">
-                                                <img src="./../assets/images/avatar/3.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Socrates Itumay">
-                                                <img src="./../assets/images/avatar/4.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
-                                                <img src="./../assets/images/avatar/6.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
-                                                <i class="feather-more-horizontal"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--! BEGIN: [Events] !-->
-                                <div class="p-3 border border-dashed rounded-3 mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="wd-50 ht-50 bg-soft-warning text-warning lh-1 d-flex align-items-center justify-content-center flex-column rounded-2 schedule-date">
-                                                <span class="fs-18 fw-bold mb-1 d-block">30</span>
-                                                <span class="fs-10 fw-semibold text-uppercase d-block">Dec</span>
-                                            </div>
-                                            <div class="text-dark">
-                                                <a href="javascript:void(0);" class="fw-bold mb-2 text-truncate-1-line">Admin Design Concept</a>
-                                                <span class="fs-11 fw-normal text-muted text-truncate-1-line">10:00am - 12:00pm</span>
-                                            </div>
-                                        </div>
-                                        <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">
-                                                <img src="./../assets/images/avatar/2.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Michael Ksen">
-                                                <img src="./../assets/images/avatar/3.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
-                                                <img src="./../assets/images/avatar/5.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
-                                                <img src="./../assets/images/avatar/6.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
-                                                <i class="feather-more-horizontal"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--! BEGIN: [Events] !-->
-                                <div class="p-3 border border-dashed rounded-3 mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="wd-50 ht-50 bg-soft-success text-success lh-1 d-flex align-items-center justify-content-center flex-column rounded-2 schedule-date">
-                                                <span class="fs-18 fw-bold mb-1 d-block">17</span>
-                                                <span class="fs-10 fw-semibold text-uppercase d-block">Dec</span>
-                                            </div>
-                                            <div class="text-dark">
-                                                <a href="javascript:void(0);" class="fw-bold mb-2 text-truncate-1-line">Standup Team Meeting</a>
-                                                <span class="fs-11 fw-normal text-muted text-truncate-1-line">8:00am - 9:00am</span>
-                                            </div>
-                                        </div>
-                                        <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">
-                                                <img src="./../assets/images/avatar/2.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Michael Ksen">
-                                                <img src="./../assets/images/avatar/3.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Socrates Itumay">
-                                                <img src="./../assets/images/avatar/4.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
-                                                <img src="./../assets/images/avatar/5.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
-                                                <i class="feather-more-horizontal"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--! BEGIN: [Events] !-->
-                                <div class="p-3 border border-dashed rounded-3 mb-2">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="wd-50 ht-50 bg-soft-danger text-danger lh-1 d-flex align-items-center justify-content-center flex-column rounded-2 schedule-date">
-                                                <span class="fs-18 fw-bold mb-1 d-block">25</span>
-                                                <span class="fs-10 fw-semibold text-uppercase d-block">Dec</span>
-                                            </div>
-                                            <div class="text-dark">
-                                                <a href="javascript:void(0);" class="fw-bold mb-2 text-truncate-1-line">Zoom Team Meeting</a>
-                                                <span class="fs-11 fw-normal text-muted text-truncate-1-line">03:30pm - 05:30pm</span>
-                                            </div>
-                                        </div>
-                                        <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">
-                                                <img src="./../assets/images/avatar/2.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Socrates Itumay">
-                                                <img src="./../assets/images/avatar/4.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
-                                                <img src="./../assets/images/avatar/5.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
-                                                <img src="./../assets/images/avatar/6.png" class="img-fluid" alt="image" />
-                                            </a>
-                                            <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
-                                                <i class="feather-more-horizontal"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center py-4">Upcomming Schedule</a>
-                        </div>
-                    </div>
-                    <!--! END: [Upcoming Schedule] !-->
-                    <!--! BEGIN: [Project Status] !-->
-                    <div class="col-xxl-4">
-                        <div class="card stretch stretch-full">
-                            <div class="card-header">
-                                <h5 class="card-title">Project Status</h5>
-                                <div class="card-header-action">
-                                    <div class="card-header-btn">
-                                        <div data-bs-toggle="tooltip" title="Delete">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Refresh">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Maximize/Minimize">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
-                                            <div data-bs-toggle="tooltip" title="Options">
-                                                <i class="feather-more-vertical"></i>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body custom-card-action">
-                                <div class="mb-3">
-                                    <div class="mb-4 pb-1 d-flex">
-                                        <div class="d-flex w-50 align-items-center me-3">
-                                            <img src="./../assets/images/brand/app-store.png" alt="laravel-logo" class="me-3" width="35" />
-                                            <div>
-                                                <a href="javascript:void(0);" class="text-truncate-1-line">Apps Development</a>
-                                                <div class="fs-11 text-muted">Applications</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-grow-1 align-items-center">
-                                            <div class="progress w-100 me-3 ht-5">
-                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 54%" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <span class="text-muted">54%</span>
-                                        </div>
-                                    </div>
-                                    <hr class="border-dashed my-3" />
-                                    <div class="mb-4 pb-1 d-flex">
-                                        <div class="d-flex w-50 align-items-center me-3">
-                                            <img src="./../assets/images/brand/figma.png" alt="figma-logo" class="me-3" width="35" />
-                                            <div>
-                                                <a href="javascript:void(0);" class="text-truncate-1-line">Dashboard Design</a>
-                                                <div class="fs-11 text-muted">App UI Kit</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-grow-1 align-items-center">
-                                            <div class="progress w-100 me-3 ht-5">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 86%" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <span class="text-muted">86%</span>
-                                        </div>
-                                    </div>
-                                    <hr class="border-dashed my-3" />
-                                    <div class="mb-4 pb-1 d-flex">
-                                        <div class="d-flex w-50 align-items-center me-3">
-                                            <img src="./../assets/images/brand/facebook.png" alt="vue-logo" class="me-3" width="35" />
-                                            <div>
-                                                <a href="javascript:void(0);" class="text-truncate-1-line">Facebook Marketing</a>
-                                                <div class="fs-11 text-muted">Marketing</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-grow-1 align-items-center">
-                                            <div class="progress w-100 me-3 ht-5">
-                                                <div class="progress-bar bg-success" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <span class="text-muted">90%</span>
-                                        </div>
-                                    </div>
-                                    <hr class="border-dashed my-3" />
-                                    <div class="mb-4 pb-1 d-flex">
-                                        <div class="d-flex w-50 align-items-center me-3">
-                                            <img src="./../assets/images/brand/github.png" alt="react-logo" class="me-3" width="35" />
-                                            <div>
-                                                <a href="javascript:void(0);" class="text-truncate-1-line">React Dashboard Github</a>
-                                                <div class="fs-11 text-muted">Dashboard</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-grow-1 align-items-center">
-                                            <div class="progress w-100 me-3 ht-5">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 37%" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <span class="text-muted">37%</span>
-                                        </div>
-                                    </div>
-                                    <hr class="border-dashed my-3" />
-                                    <div class="d-flex">
-                                        <div class="d-flex w-50 align-items-center me-3">
-                                            <img src="./../assets/images/brand/paypal.png" alt="sketch-logo" class="me-3" width="35" />
-                                            <div>
-                                                <a href="javascript:void(0);" class="text-truncate-1-line">Paypal Payment Gateway</a>
-                                                <div class="fs-11 text-muted">Payment</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-grow-1 align-items-center">
-                                            <div class="progress w-100 me-3 ht-5">
-                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 29%" aria-valuenow="29" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <span class="text-muted">29%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center">Upcomming Projects</a>
-                        </div>
-                    </div>
-                    <!--! END: [Project Status] !-->
-                    <!--! BEGIN: [Team Progress] !-->
-                    <div class="col-xxl-4">
-                        <div class="card stretch stretch-full">
-                            <div class="card-header">
-                                <h5 class="card-title">Team Progress</h5>
-                                <div class="card-header-action">
-                                    <div class="card-header-btn">
-                                        <div data-bs-toggle="tooltip" title="Delete">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Refresh">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>
-                                        </div>
-                                        <div data-bs-toggle="tooltip" title="Maximize/Minimize">
-                                            <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
-                                            <div data-bs-toggle="tooltip" title="Options">
-                                                <i class="feather-more-vertical"></i>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                            <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body custom-card-action">
-                                <div class="hstack justify-content-between border border-dashed rounded-3 p-3 mb-3">
-                                    <div class="hstack gap-3">
-                                        <div class="avatar-image">
-                                            <img src="./../assets/images/avatar/1.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);">Alexandra Della</a>
-                                            <div class="fs-11 text-muted">Frontend Developer</div>
-                                        </div>
-                                    </div>
-                                    <div class="team-progress-1"></div>
-                                </div>
-                                <div class="hstack justify-content-between border border-dashed rounded-3 p-3 mb-3">
-                                    <div class="hstack gap-3">
-                                        <div class="avatar-image">
-                                            <img src="./../assets/images/avatar/2.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);">Archie Cantones</a>
-                                            <div class="fs-11 text-muted">UI/UX Designer</div>
-                                        </div>
-                                    </div>
-                                    <div class="team-progress-2"></div>
-                                </div>
-                                <div class="hstack justify-content-between border border-dashed rounded-3 p-3 mb-3">
-                                    <div class="hstack gap-3">
-                                        <div class="avatar-image">
-                                            <img src="./../assets/images/avatar/3.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);">Malanie Hanvey</a>
-                                            <div class="fs-11 text-muted">Backend Developer</div>
-                                        </div>
-                                    </div>
-                                    <div class="team-progress-3"></div>
-                                </div>
-                                <div class="hstack justify-content-between border border-dashed rounded-3 p-3 mb-2">
-                                    <div class="hstack gap-3">
-                                        <div class="avatar-image">
-                                            <img src="./../assets/images/avatar/4.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);">Kenneth Hune</a>
-                                            <div class="fs-11 text-muted">Digital Marketer</div>
-                                        </div>
-                                    </div>
-                                    <div class="team-progress-4"></div>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center">Update 30 Min Ago</a>
-                        </div>
-                    </div>
-                    <!--! END: [Team Progress] !-->
+
                 </div>
             </div>
             <!-- [ Main Content ] end -->
         </div>
         <!-- [ Footer ] start -->
-        @yield('content-footer')
+        @include('layouts.partials.footer')
         <!-- [ Footer ] end -->
     </main>
-    <!--! ================================================================ !-->
-    <!--! [End] Main Content !-->
-    <!--! ================================================================ !-->
-    <!--! ================================================================ !-->
-    <!--! BEGIN: Theme Customizer !-->
-    <!--! ================================================================ !-->
-    <div class="theme-customizer">
-        <div class="customizer-handle">
-            <a href="javascript:void(0);" class="cutomizer-open-trigger bg-primary">
-                <i class="feather-settings"></i>
-            </a>
-        </div>
-        <div class="customizer-sidebar-wrapper">
-            <div class="customizer-sidebar-header px-4 ht-80 border-bottom d-flex align-items-center justify-content-between">
-                <h5 class="mb-0">Theme Settings</h5>
-                <a href="javascript:void(0);" class="cutomizer-close-trigger d-flex">
-                    <i class="feather-x"></i>
-                </a>
-            </div>
-            <div class="customizer-sidebar-body position-relative p-4" data-scrollbar-target="#psScrollbarInit">
-                <!--! BEGIN: [Navigation] !-->
-                <div class="position-relative px-3 pb-3 pt-4 mt-3 mb-5 border border-gray-2 theme-options-set">
-                    <label class="py-1 px-2 fs-8 fw-bold text-uppercase text-muted text-spacing-2 bg-white border border-gray-2 position-absolute rounded-2 options-label" style="top: -12px">Navigation</label>
-                    <div class="row g-2 theme-options-items app-navigation" id="appNavigationList">
-                        <div class="col-6 text-center single-option">
-                            <input type="radio" class="btn-check" id="app-navigation-light" name="app-navigation" value="1" data-app-navigation="app-navigation-light" checked />
-                            <label class="py-2 fs-9 fw-bold text-dark text-uppercase text-spacing-1 border border-gray-2 w-100 h-100 c-pointer position-relative options-label" for="app-navigation-light">Light</label>
-                        </div>
-                        <div class="col-6 text-center single-option">
-                            <input type="radio" class="btn-check" id="app-navigation-dark" name="app-navigation" value="2" data-app-navigation="app-navigation-dark" />
-                            <label class="py-2 fs-9 fw-bold text-dark text-uppercase text-spacing-1 border border-gray-2 w-100 h-100 c-pointer position-relative options-label" for="app-navigation-dark">Dark</label>
-                        </div>
-                    </div>
-                </div>
-                <!--! END: [Navigation] !-->
-                <!--! BEGIN: [Header] !-->
-                <div class="position-relative px-3 pb-3 pt-4 mt-3 mb-5 border border-gray-2 theme-options-set mt-5">
-                    <label class="py-1 px-2 fs-8 fw-bold text-uppercase text-muted text-spacing-2 bg-white border border-gray-2 position-absolute rounded-2 options-label" style="top: -12px">Header</label>
-                    <div class="row g-2 theme-options-items app-header" id="appHeaderList">
-                        <div class="col-6 text-center single-option">
-                            <input type="radio" class="btn-check" id="app-header-light" name="app-header" value="1" data-app-header="app-header-light" checked />
-                            <label class="py-2 fs-9 fw-bold text-dark text-uppercase text-spacing-1 border border-gray-2 w-100 h-100 c-pointer position-relative options-label" for="app-header-light">Light</label>
-                        </div>
-                        <div class="col-6 text-center single-option">
-                            <input type="radio" class="btn-check" id="app-header-dark" name="app-header" value="2" data-app-header="app-header-dark" />
-                            <label class="py-2 fs-9 fw-bold text-dark text-uppercase text-spacing-1 border border-gray-2 w-100 h-100 c-pointer position-relative options-label" for="app-header-dark">Dark</label>
-                        </div>
-                    </div>
-                </div>
-                <!--! END: [Header] !-->
-                <!--! BEGIN: [Skins] !-->
-                <div class="position-relative px-3 pb-3 pt-4 mt-3 mb-5 border border-gray-2 theme-options-set">
-                    <label class="py-1 px-2 fs-8 fw-bold text-uppercase text-muted text-spacing-2 bg-white border border-gray-2 position-absolute rounded-2 options-label" style="top: -12px">Skins</label>
-                    <div class="row g-2 theme-options-items app-skin" id="appSkinList">
-                        <div class="col-6 text-center position-relative single-option light-button active">
-                            <input type="radio" class="btn-check" id="app-skin-light" name="app-skin" value="1" data-app-skin="app-skin-light" />
-                            <label class="py-2 fs-9 fw-bold text-dark text-uppercase text-spacing-1 border border-gray-2 w-100 h-100 c-pointer position-relative options-label" for="app-skin-light">Light</label>
-                        </div>
-                        <div class="col-6 text-center position-relative single-option dark-button">
-                            <input type="radio" class="btn-check" id="app-skin-dark" name="app-skin" value="2" data-app-skin="app-skin-dark" />
-                            <label class="py-2 fs-9 fw-bold text-dark text-uppercase text-spacing-1 border border-gray-2 w-100 h-100 c-pointer position-relative options-label" for="app-skin-dark">Dark</label>
-                        </div>
-                    </div>
-                </div>
-                <!--! END: [Skins] !-->
-                <!--! BEGIN: [Typography] !-->
-                <div class="position-relative px-3 pb-3 pt-4 mt-3 mb-0 border border-gray-2 theme-options-set">
-                    <label class="py-1 px-2 fs-8 fw-bold text-uppercase text-muted text-spacing-2 bg-white border border-gray-2 position-absolute rounded-2 options-label" style="top: -12px">Typography</label>
-                    <div class="row g-2 theme-options-items font-family" id="fontFamilyList">
-
-                        <div class="col-6 text-center single-option">
-                            <input type="radio" class="btn-check" id="app-font-family-nunito" name="font-family" value="6" data-font-family="app-font-family-nunito" />
-                            <label class="py-2 fs-9 fw-bold text-dark text-uppercase text-spacing-1 border border-gray-2 w-100 h-100 c-pointer position-relative options-label" for="app-font-family-nunito">Nunito</label>
-                        </div>
-
-                    </div>
-                </div>
-                <!--! END: [Typography] !-->
-            </div>
-            <div class="customizer-sidebar-footer px-4 ht-60 border-top d-flex align-items-center gap-2">
-                <div class="flex-fill w-50">
-                    <a href="javascript:void(0);" class="btn btn-danger" data-style="reset-all-common-style">Reset</a>
-                </div>
-                <div class="flex-fill w-50">
-                    <a href="javascript:void(0);" class="btn btn-primary">Download</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--! ================================================================ !-->
-    <!--! [End] Theme Customizer !-->
-    <!--! ================================================================ !-->
 @endsection

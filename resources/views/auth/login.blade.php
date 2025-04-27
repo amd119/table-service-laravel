@@ -1,5 +1,6 @@
 
-@extends('layouts.app', ['titlePage' => 'Login'])
+@extends('layouts.app')
+@section('title', 'Login')
 @section('content-guest')
     <!--! ================================================================ !-->
     <!--! [Start] Main Content !-->
